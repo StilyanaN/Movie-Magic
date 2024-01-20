@@ -1,0 +1,26 @@
+{
+  "name": "movie-magic",
+  "version": "1.0.0",
+  "description": "JS Backend Workshop - Softuni",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StilyanaN/Movie-Magic.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/StilyanaN/Movie-Magic/issues"
+  },
+  "homepage": "https://github.com/StilyanaN/Movie-Magic#readme",
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
