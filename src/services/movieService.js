@@ -8,6 +8,10 @@ const movies = [{
     description: 'Dreaming about saving countless lives and having another adventure'
 }];
 
+exports.getAll = () => {
+    return movies.slice();
+}
+
 exports.create = (movieData) => {
     movies.push(movieData)
 }
