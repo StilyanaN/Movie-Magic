@@ -13,8 +13,29 @@ exports.getAll = () => {
     return movies.slice();
 }
 
+exports.search = (title, genre, year) =>{
+    let result = movies.slice();
+
+    if(title){
+        result = result.filter(movie => movie.title.toLocaleLowerCase().includes(title.toLocaleLowerCase()));
+    }
+
+    if(genre){
+        result = result.filter(movie => movie.genre.toLocaleLowerCase() === genre.toLocaleLowerCase());
+    }
+
+    if(year){
+        result = result.filter(movie => movie.year === year);
+    }
+
+    return result;
+
+} 
+
 exports.getOne = (movieId) => {
-    return movies.find(movie => movie._id == movieId);
+    const movie = movies.find(movie => movie._id == movieId);
+
+    return movie;
 }
 
 exports.create = (movieData) => {
