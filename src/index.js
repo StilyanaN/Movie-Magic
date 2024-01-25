@@ -1,4 +1,5 @@
 const express = require('express');
+const mongoose = require('mongoose');
 
 const routes = require('./routes');
 
@@ -14,4 +15,10 @@ configExpress(app);
 
 app.use(routes);
 
-app.listen(port, () => console.log(`Server is listening on port ${port}...`));
+mongoose.connect(`mongodb://127.0.0.1:27017/movies`)
+.then(() =>{
+    console.log('DB Connected')
+    app.listen(port, () => console.log(`Server is listening on port ${port}...`));
+})
+.catch(err => console.log('Cannot connect to DB'))
+
