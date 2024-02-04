@@ -28,6 +28,8 @@ exports.getOne = (movieId) => Movie.findById(movieId).populate('casts');
 
 exports.create = (movieData) => Movie.create(movieData);
 
+exports.edit = (movieId , movieData) => Movie.findByIdAndUpdate(movieId, movieData);
+
 exports.attach = (movieId, castId) => {
     // const movie = await this.getOne(movieId);
     //movie.casts.push(castId);
@@ -35,4 +37,5 @@ exports.attach = (movieId, castId) => {
    return Movie.findByIdAndUpdate(movieId, {$push: {casts: castId}});
 }
 
+exports.delete = (movieId) => Movie.findByIdAndDelete(movieId);
 
