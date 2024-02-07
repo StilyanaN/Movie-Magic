@@ -9,15 +9,19 @@ const castSchema = new mongoose.Schema({
         type: Number,
         required: true,
         max: 120,
-        min: 14,
+        min: 1,
     },
     born: {
         type: String,
         required: true,
+        match: /^[a-zA-Z0-9\s]+$/,
+        minLength: [10, 'Born should be at least 10 characters long!'],
     },
     nameInMovie: {
         type: String,
         required: true,
+        match: /^[a-zA-Z0-9\s]+$/,
+        minLength: [5, 'Character should be at least characters long!'],
     },
     castImage: {
         type: String,

@@ -6,29 +6,33 @@ router.get('/register', (req, res) => {
     res.render('auth/register');
 });
 
-router.post('/register', async (req,res) => {
+router.post('/register', async (req, res) => {
     const userData = req.body;
 
-    await authService.register(userData);
+    try {
+        await authService.register(userData);
+        res.redirect('/auth/login');
+    } catch (err) {
+        res.render('auth/register', { error: err.message })
+    }
 
-    res.redirect('/auth/login');
 });
 
-router.get('/login', (req,res) => {
+router.get('/login', (req, res) => {
     res.render('auth/login');
 });
 
-router.post('/login', async (req,res)=> {
-    const {email, password} = req.body;
+router.post('/login', async (req, res) => {
+    const { email, password } = req.body;
 
-    const token = await authService.login(email,password);
+    const token = await authService.login(email, password);
 
     res.cookie('auth', token);
 
     res.redirect('/');
 });
 
-router.get('/logout', (req,res) => {
+router.get('/logout', (req, res) => {
     res.clearCookie('auth');
 
     res.redirect('/');
